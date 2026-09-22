@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia</title>
+</head>
+<body>
+    <center>
+        <h1>MULTIMEDIA</h1>
+        <h2><a href="index.html">Regresar</a></h2>
+        <h4>1. VIDEO</h4>
+        <video width="400" height="300" controls autoplay muted loop poster="img/listas.jpg">
+            <source src="archivos/Video1.mp4" type="video/mp4">
+            <h1>Video</h1>
+            Your browser does not support the video tag.
+        </video>
+        <h3>2. Audio</h3>
+        <audio controls autoplay muted loop>
+            <source src="archivos/Audio1.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+        <h3>3. Ejemplo video con subtitulos</h3>
+        <video width="800" height="600" controls>
+            <source src="archivos/Video1.mp4" type="video/mp4" width="800" height="600">
+
+            <track
+                src="archivos/subtitulos.vtt"
+                kind="subtitles"
+                srclang="en"
+                label="English"
+                default
+            >
+        </video>
+
+        <h3>4. Ejemplos de imagen con ruta relativa</h3>
+        <img src="img/TIM.jpg" alt="TIM BERNES LEE" width="400" height="300" loading="lazy" border="10px">
+        <h3>5. Ejemplos de imagen con ruta absoluta</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQElU-kM3IUHnCot1tfZVxsXefRzWbXi7o0BfD9BSUZsFl7UKa1B4XFCdIi&s=10" alt="" width="400" height="300" loading="lazy" border="10px">
+        
+        <h3>6. Ejemplo figure</h3>
+        <figure>
+            <img src="img/images (1).png" alt="sementica" width="400" height="300" loading="lazy" border="10px">
+            <figcaption>Figura 1: Estructuta semantica</figcaption>
+        </figure>
+        <h3>7. Ejemplo SWF con embed</h3>
+        <object type="application/x-shockwave-flash" data="archivos/Grabación-de-pantalla-2026-08-17-211035.swf" width="800" height="600">
+            <param name="movie" value="archivos/Grabación-de-pantalla-2026-08-17-211035.swf" />
+            <param name="quality" value="high" />
+            <p>Tu navegador no admite la reproducción de archivos Flash (SWF).</p>
+        </object>
+
+        <h3>8. Ejemplo canvas</h3>
+        <h2><a href="juego.html">Juego en canvas</a></h2>
+    
+        <script>
+            const ctx = document.getElementById('myCanvas').getContext('2d');
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(20, 20, 150, 100);
+        </script>
+
+        <h3>9. Ejemplo SVG</h3>
+        <svg width="300" height="200"
+            viewBox="0 0 300 200"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Fondo -->
+            <rect width="300" height="200" fill="black"/>
+
+            <!-- Nave -->
+            <polygon
+                points="150,30 90,150 150,125 210,150"
+                fill="silver"
+                stroke="white"
+                stroke-width="3"
+            />
+
+            <!-- Ventana -->
+            <circle
+                cx="150"
+                cy="80"
+                r="18"
+                fill="cyan"
+            />
+
+            <!-- Fuego -->
+            <polygon
+                points="125,140 150,190 175,140"
+                fill="orange"
+            />
+
+        </svg>
+    </center>
+</body>
+</html>

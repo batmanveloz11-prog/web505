@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <form id="formPrincipal">
+            <fieldset>
+            <legend>Datos personales</legend>
+            <label>Nombre:</label>
+            <input type="text" name="nombre">
+        </fieldset>
+        <fieldset disabled="disabled">
+            <legend>Configuracion Avanzada</legend>
+            <label>Ruta del sistema</label>
+            <input type="text" name="ruta" value="/var/www/html">
+            <input type="checkbox" name="forzar" checked>Forzar reinicio
+        </fieldset>
+        <button type="submit">Enviar</button>
+        </form>
+        <fieldset form="formPrincipal">
+            <legend>Paso</legend>
+            <label>Telefono alrternativo:</label>
+            <input type="tel" name="telefono">
+        </fieldset>
+        
+        <form id="formPrincipal">
+            <fieldset name="grupo_domicilio">
+            <legend>Direccion de envio</legend>
+            <label>Calle:</label>
+            <input type="text" name="calle">
+            <br>
+            <label>Ciudad:</label>
+            <input type="text" name="ciudad">
+            <label>Codigo porstal</label>
+            <input type="number" name="cp" checked>
+        </fieldset>
+        </form>
+    </center>
+</body>
+</html>

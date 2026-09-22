@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <h1>Juego de canvas</h1>
+    <h2><a href="07multimedia.html">Regresar</a></h2>
+    <meta charset="UTF-8">
+    <title>Juego Canvas</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: #222;
+            color: white;
+        }
+
+        canvas {
+            background: #eee;
+            border: 3px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎮 Atrapa el cuadrado</h1>
+    <p>Usa las flechas ← ↑ ↓ → para moverte</p>
+
+    <canvas id="juego" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("juego");
+        const ctx = canvas.getContext("2d");
+
+        let jugador = {
+            x: 50,
+            y: 50,
+            tamaño: 30,
+            velocidad: 5
+        };
+
+        let enemigo = {
+            x: 400,
+            y: 250,
+            tamaño: 30
+        };
+
+        let puntos = 0;
+
+        let teclas = {};
+
+        document.addEventListener("keydown", (e) => {
+            teclas[e.key] = true;
+        });
+
+        document.addEventListener("keyup", (e) => {
+            teclas[e.key] = false;
+        });
+
+        function actualizar() {
+
+            if (teclas["ArrowUp"])
+                jugador.y -= jugador.velocidad;
+
+            if (teclas["ArrowDown"])
+                jugador.y += jugador.velocidad;
+
+            if (teclas["ArrowLeft"])
+                jugador.x -= jugador.velocidad;
+
+            if (teclas["ArrowRight"])
+                jugador.x += jugador.velocidad;
+
+            // Limitar al jugador dentro del canvas
+            jugador.x = Math.max(0, Math.min(canvas.width - jugador.tamaño, jugador.x));
+            jugador.y = Math.max(0, Math.min(canvas.height - jugador.tamaño, jugador.y));
+
+            // Detectar colisión
+            if (
+                jugador.x < enemigo.x + enemigo.tamaño &&
+                jugador.x + jugador.tamaño > enemigo.x &&
+                jugador.y < enemigo.y + enemigo.tamaño &&
+                jugador.y + jugador.tamaño > enemigo.y
+            ) {
+                puntos++;
+
+                enemigo.x = Math.random() * (canvas.width - enemigo.tamaño);
+                enemigo.y = Math.random() * (canvas.height - enemigo.tamaño);
+            }
+        }
+
+        function dibujar() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Jugador
+            ctx.fillStyle = "blue";
+            ctx.fillRect(
+                jugador.x,
+                jugador.y,
+                jugador.tamaño,
+                jugador.tamaño
+            );
+
+            // Enemigo
+            ctx.fillStyle = "red";
+            ctx.fillRect(
+                enemigo.x,
+                enemigo.y,
+                enemigo.tamaño,
+                enemigo.tamaño
+            );
+
+            // Puntos
+            ctx.fillStyle = "black";
+            ctx.font = "20px Arial";
+            ctx.fillText("Puntos: " + puntos, 10, 25);
+        }
+
+        function juego() {
+            actualizar();
+            dibujar();
+
+            requestAnimationFrame(juego);
+        }
+
+        juego();
+    </script>
+
+</body>
+</html>
